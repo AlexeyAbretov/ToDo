@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToDoListType } from '@types';
 import { Button } from '../Button';
-import styles from './List.css';
+import './List.scss';
 
 // items = { id, title, isFinish }
 export const List: React.FC<{
@@ -12,10 +12,10 @@ export const List: React.FC<{
   onEdit: (id: string, title: string) => void;
 }> = ({ items, onRemove, onEdit, onFinish, onRevert }) => {
   return (
-    <div className={styles.List}>
+    <div className="List">
       {items?.map(x => (
-        <div key={x.id} className={styles.list__container}>
-          <div className={`${x.isFinish ? styles.ListItem_finish : ''}`}>
+        <div key={x.id} className="list__container">
+          <div className={`${x.isFinish ? 'ListItem_finish' : ''}`}>
             {x.title}
           </div>
           <div>

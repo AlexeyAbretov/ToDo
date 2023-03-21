@@ -1,4 +1,5 @@
-export { store, RootState } from './store';
+export { store } from './store';
+export type { RootState } from './store';
 export {
   ToDoSliceReducer,
   InitialToDo,
