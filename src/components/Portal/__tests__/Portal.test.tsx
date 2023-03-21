@@ -5,8 +5,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
+import { it, describe, expect, afterEach } from 'vitest';
 
 import { theme } from '@theme';
+
 import { Portal } from '..';
 
 const getUi = (node?: Element): JSX.Element => {

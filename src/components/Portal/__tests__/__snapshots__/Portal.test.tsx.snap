@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Portal tests should render by body 1`] = `
+exports[`Portal tests > should render by body 1`] = `
 <body>
   <div
     id="customNode"
@@ -10,7 +10,7 @@ exports[`Portal tests should render by body 1`] = `
 </body>
 `;
 
-exports[`Portal tests should render in custom node 1`] = `
+exports[`Portal tests > should render in custom node 1`] = `
 <body>
   <div
     id="root"
@@ -24,7 +24,7 @@ exports[`Portal tests should render in custom node 1`] = `
 </body>
 `;
 
-exports[`Portal tests should render in root 1`] = `
+exports[`Portal tests > should render in root 1`] = `
 <body>
   <div
     id="root"

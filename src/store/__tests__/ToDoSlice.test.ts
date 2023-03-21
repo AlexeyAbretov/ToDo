@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
-import { LoadingState } from '@constants';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import fetchMock, { FetchMock } from 'jest-fetch-mock';
+import { it, describe, expect, beforeEach } from 'vitest';
+
+import { LoadingState } from '@constants';
+
 import {
   InitialToDo,
   ToDoSliceReducer,
@@ -29,18 +32,16 @@ const propertyErrorMatcherItem = {
 
 describe('ToDoSlice tests', () => {
   beforeEach(() => {
-    fetchMock.doMock();
-  });
-
-  afterEach(() => {
-    fetchMock.resetMocks();
+    // @ts-ignore
+    fetch.resetMocks();
   });
 
   describe('loadTodoList tests', () => {
     it('should success', async () => {
       const store = mockStore({ ...InitialToDo });
 
-      (fetch as FetchMock).mockResponse(
+      // @ts-ignore
+      fetch.mockResponse(
         JSON.stringify({
           list: [{ id: 1 }],
         }),
@@ -49,7 +50,6 @@ describe('ToDoSlice tests', () => {
         },
       );
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       await store.dispatch(await loadTodoList());
 
@@ -66,7 +66,8 @@ describe('ToDoSlice tests', () => {
     it('should fail', async () => {
       const store = mockStore({ ...InitialToDo });
 
-      (fetch as FetchMock).mockResponse(
+      // @ts-ignore
+      fetch.mockResponse(
         JSON.stringify({
           list: [{ id: 1 }],
         }),
@@ -125,7 +126,8 @@ describe('ToDoSlice tests', () => {
     it('should success', async () => {
       const store = mockStore({ ...InitialToDo });
 
-      (fetch as FetchMock).mockResponse(
+      // @ts-ignore
+      fetch.mockResponse(
         JSON.stringify({
           id: 100,
         }),

@@ -1,15 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Button tests should render correct add button 1`] = `
-.c0 {
-  cursor: pointer;
-  display: inline-block;
-}
-
+exports[`Button tests > should render correct add button 1`] = `
 <div>
   <div
     aria-hidden="true"
-    class="c0"
+    class="sc-beqWaB cudcOA"
     role="button"
     title="I am button"
   >
