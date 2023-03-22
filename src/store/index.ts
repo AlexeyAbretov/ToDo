@@ -1,4 +1,5 @@
-export { store, RootState } from './store';
+export { store } from './store';
+export type { RootState } from './store';
 export {
   ToDoSliceReducer,
   InitialToDo,
@@ -6,6 +7,11 @@ export {
   remove,
   finish,
   revert,
-  add,
+  setLoadingState,
+  loadTodoList,
+  addTodoItem,
 } from './ToDoSlice';
-export { getToDoListContainerProps } from './selectors';
+export {
+  getToDoListContainerProps,
+  getLoaderContainerProps,
+} from './selectors';
