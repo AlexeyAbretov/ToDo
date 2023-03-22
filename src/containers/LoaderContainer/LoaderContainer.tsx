@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Loader } from '@components';
-import { getLoaderContainerProps } from '@store';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { TodoContext } from '@store';
+import { Observer } from 'mobx-react-lite';
+import React, { useContext } from 'react';
 
 export const LoaderContainer = () => {
-  const { isShow } = useSelector(getLoaderContainerProps);
-  return isShow && <Loader />;
+  const { todoStore } = useContext(TodoContext);
+
+  return <Observer>{() => todoStore.isLoading && <Loader />}</Observer>;
 };

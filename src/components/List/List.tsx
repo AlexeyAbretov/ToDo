@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { ToDoListType } from '@types';
 import { Button } from '../Button';
@@ -6,10 +7,10 @@ import styles from './List.css';
 // items = { id, title, isFinish }
 export const List: React.FC<{
   items: ToDoListType;
-  onRemove: (id: string) => void;
-  onFinish: (id: string) => void;
-  onRevert: (id: string) => void;
-  onEdit: (id: string, title: string) => void;
+  onRemove?: (id: string) => void;
+  onFinish?: (id: string) => void;
+  onRevert?: (id: string) => void;
+  onEdit?: (id: string, title: string) => void;
 }> = ({ items, onRemove, onEdit, onFinish, onRevert }) => {
   return (
     <div className={styles.List}>

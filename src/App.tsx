@@ -1,27 +1,32 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React from 'react';
-import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
 import {
   AddInputContainer,
+  EditPopupContainer,
   LoaderContainer,
   ToDoListContainer,
 } from '@containers';
 import { GlobalStyles } from '@GlobalStyles';
-import { ThemeProvider } from 'styled-components';
+
 import styles from './App.css';
-import { store } from './store';
+
 import { theme } from './theme';
+import { RootStore, TodoContext } from './store';
 
 export const App = () => {
   return (
-    <Provider store={store}>
+    <TodoContext.Provider value={new RootStore()}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <div className={styles.App}>
           <AddInputContainer />
           <ToDoListContainer />
           <LoaderContainer />
+          <EditPopupContainer />
         </div>
       </ThemeProvider>
-    </Provider>
+    </TodoContext.Provider>
   );
 };
