@@ -3,6 +3,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
+import { it, describe, expect } from 'vitest';
 
 import { theme } from '../../../theme';
 import { Button, ButtonType } from '../Button';

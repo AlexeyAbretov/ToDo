@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ToDoSlice tests addTodoItem tests should success 1`] = `
+exports[`ToDoSlice tests > addTodoItem tests > should success 1`] = `
 {
   "actions": [
     {
@@ -29,7 +29,7 @@ exports[`ToDoSlice tests addTodoItem tests should success 1`] = `
 }
 `;
 
-exports[`ToDoSlice tests loadTodoList tests should fail 1`] = `
+exports[`ToDoSlice tests > loadTodoList tests > should fail 1`] = `
 {
   "actions": [
     {
@@ -62,7 +62,7 @@ exports[`ToDoSlice tests loadTodoList tests should fail 1`] = `
 }
 `;
 
-exports[`ToDoSlice tests loadTodoList tests should success 1`] = `
+exports[`ToDoSlice tests > loadTodoList tests > should success 1`] = `
 {
   "actions": [
     {
