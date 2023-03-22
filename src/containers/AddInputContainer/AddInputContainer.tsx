@@ -1,15 +1,21 @@
-import React from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useContext } from 'react';
 import { AddInput } from '@components';
-import { useDispatch } from 'react-redux';
-import { addTodoItem } from '@store';
+import { TodoContext } from '@store';
+import { Observer } from 'mobx-react-lite';
 
 export const AddInputContainer = () => {
-  const dispatch = useDispatch();
+  const { todoStore } = useContext(TodoContext);
+
   return (
-    <AddInput
-      onAdd={value => {
-        dispatch(addTodoItem(value));
-      }}
-    />
+    <Observer>
+      {() => (
+        <AddInput
+          onAdd={value => {
+            todoStore.addTodoItem(value);
+          }}
+        />
+      )}
+    </Observer>
   );
 };

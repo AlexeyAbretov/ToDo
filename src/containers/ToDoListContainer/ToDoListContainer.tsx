@@ -1,59 +1,56 @@
-import React, { useEffect } from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useContext, useEffect } from 'react';
 import { List } from '@components';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  finish,
-  remove,
-  revert,
-  edit,
-  getToDoListContainerProps,
-  loadTodoList,
-} from '@store';
+import { TodoContext } from '@store';
+import { Observer } from 'mobx-react-lite';
 
 export const ToDoListContainer = () => {
-  const { items } = useSelector(getToDoListContainerProps);
-  const dispatch = useDispatch();
+  const { todoStore, popupStore } = useContext(TodoContext);
 
   useEffect(() => {
-    dispatch(loadTodoList());
-  }, [dispatch]);
+    todoStore.loadTodoList();
+  }, [todoStore]);
 
   return (
-    <List
-      items={items}
-      onFinish={id => {
-        fetch('/api/v1/todo/finish', {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id,
-          }),
-        }).then(() => {
-          dispatch(finish(id));
-        });
-      }}
-      onRemove={id => {
-        fetch('/api/v1/todo', {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id,
-          }),
-        }).then(() => {
-          dispatch(remove(id));
-        });
-      }}
-      onRevert={id => dispatch(revert(id))}
-      onEdit={(id, title) => {
-        const text = prompt('Введите новое название', title);
-        if (text) {
-          dispatch(edit({ id, title: text }));
-        }
-      }}
-    />
+    <Observer>
+      {() => (
+        <List
+          items={todoStore.items}
+          onFinish={id => {
+            fetch('/api/v1/todo/finish', {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id,
+              }),
+            }).then(() => {
+              // dispatch(finish(id));
+            });
+          }}
+          onRemove={id => {
+            fetch('/api/v1/todo', {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id,
+              }),
+            }).then(() => {
+              // dispatch(remove(id));
+            });
+          }}
+          // onRevert={id => dispatch(revert(id))}
+          onEdit={id => {
+            todoStore.setCurrentItem({
+              ...todoStore.items.find(x => x.id === id),
+            });
+            popupStore.openPopup('edit');
+          }}
+        />
+      )}
+    </Observer>
   );
 };
